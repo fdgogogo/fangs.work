@@ -42,7 +42,8 @@ title: 使用docker-compose编译静态文件
 
 ### Dockerfile (python)
 python正常编译，不添加node及ruby环境
-``` Dockerfile
+
+```
 FROM python
 ADD . code/
 RUN pip install -r requirements.txt
@@ -52,6 +53,7 @@ EXPOSE 4000
 
 CMD gunicorn --chdir /code -w 4 -b 0.0.0.0:4000 apps:app
 ```
+
 ### Dockerfile (node)
 ```
 FROM node
