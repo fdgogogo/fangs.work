@@ -10,7 +10,7 @@ title: 使用docker-compose编译静态文件
 
 我们可以使用 `docker-compose` 的 `volumes_from` 参数来简化这一过程：
 
-> *volumes_from*
+> **volumes_from**    
 > Mount all of the volumes from another service or container, optionally specifying read-only access(ro) or read-write(rw).
 
 ## 环境
@@ -113,17 +113,17 @@ nginx:
 
 这个compose定义了4个服务:
 
-- app
+- `app`
   - 主服务
-- node
-  - 包含 bower_components
-  - 包含 node_modules
-  - 在运行时进行grunt编译， 完成后container自动停止
+- `node`
+  - 包含 `bower_components`
+  - 包含 `node_modules`
+  - 在运行时进行 `grunt` 编译， 完成后container自动停止
   - container内的`/code`目录暴露给其他container挂载
-- ruby
+- `ruby`
   - 包含 `compass` 工具
   - 从 `node` container 挂入 `/code` 目录， 运行时进行相关编译
-- nginx
+- `nginx`
   - 从 `node` container 挂入 `/code` 目录, 该目录文件已经过 `grunt` 及 `compass` 编译， 由nginx直接serve
 
-大致就是这样的一个流程，在这里编译命令是作为CMD写在Dockerfile里面的，这样才能在container运行时进行编译，对于 `compass` 镜像来说这是必须的, 但对于node镜像而言也可以在Dockerfile里面写成RUN，根据具体需要决定。
+大致就是这样的一个流程，在这里编译命令是作为CMD写在`Dockerfile`里面的，这样才能在container运行时进行编译，对于 `compass` 镜像来说这是必须的, 但对于node镜像而言也可以在`Dockerfile`里面写成RUN，根据具体需要决定。
