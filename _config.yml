@@ -21,11 +21,11 @@ footer-links:
   email: fduodev@gmail.com
   facebook:
   flickr:
-  github: barryclark/jekyll-now
+  github: fdgogogo/fdgogogo.github.io
   instagram: fdgogogo
-  linkedin:
+  linkedin: jiaan-fang-b3164b42
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: 1 # just type anything here for a working RSS icon
   twitter: fdgogogo
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
@@ -53,7 +53,7 @@ baseurl: ""
 # !! You don't need to change any of the configuration flags below !!
 #
 
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 permalink: /:title/
 
