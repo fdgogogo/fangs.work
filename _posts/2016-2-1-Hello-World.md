@@ -1,6 +1,8 @@
 ---
 layout: post
 title: reboot
+tags: [misc]
+
 ---
 
 很久没有写博客了， 原先的博客是四五年前建的， 用Wordpress写的，现在看来有很多小白内容。

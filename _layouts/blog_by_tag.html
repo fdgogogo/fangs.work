@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="page">
+  <h1>标签归档: {{ page.tag }}</h1>
+  {% if site.tags[page.tag] %}
+      {% for post in site.tags[page.tag] %}
+        <article class="post">
+
+          <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+          <div class="entry">
+            {{ post.excerpt }}
+          </div>
+
+          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">继续阅读</a>
+        </article>
+      {% endfor %}
+  {% else %}
+    <p>该标签下没有相关文章</p>
+  {% endif %}
+</article>
