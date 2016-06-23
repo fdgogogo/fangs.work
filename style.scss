@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 24px;
   a {
     color: inherit;
   }
@@ -115,9 +115,14 @@ img {
   max-width: none;
 }
 
-.date {
-  font-style: italic;
-  color: $gray;
+.post-meta{
+    font-size: 75%;
+    text-align: right;
+    font-style: italic;
+    color: $mediumGray;
+    a {
+        color: $gray;
+    }
 }
 
 // Specify the color of the selection

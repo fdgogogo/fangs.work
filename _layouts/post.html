@@ -8,9 +8,13 @@ layout: default
   <div class="entry">
     {{ content }}
   </div>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+  <div class="post-meta">
+      <span class="copyright">
+          按照 <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/">CC BY-NC-ND 3.0 CN</a> 协议进行许可
+      </span>
+      <span class="date">
+        创建于 {{ page.date | date: "%Y-%m-%d %H:%M"}}
+      </span>
   </div>
 
   {% include disqus.html %}
