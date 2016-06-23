@@ -6,6 +6,10 @@ permalink: /about/
 
 房家安 Jiaan Fang
 
+- Python Web后端工程师
+- OS X + iOS 用户
+- Docker用户
+- 有时也做AngularJS
 
 
 ### 联系我
