@@ -8,7 +8,8 @@
 - [ ] docker-machine 快速安装
 - [ ] docker-swarm 部署
 - [ ] blinker 用于解耦
-- [ ] sqlalchemy 
+- [ ] sqlalchemy
+- [ ] python cmd.Cmd
 
 ## Credits
 
