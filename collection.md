@@ -36,3 +36,4 @@ permalink: /collection/
 
 ### 其他
 - [meow](https://github.com/renzhn/MEOW)
+- [常用镜像](http://fangs.work/Common-Repo-Mirror/)
