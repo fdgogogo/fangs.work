@@ -6,14 +6,11 @@ layout: default
   {% if site.tags[page.tag] %}
       {% for post in site.tags[page.tag] %}
         <article class="post">
-
           <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
           <div class="entry">
             {{ post.excerpt }}
           </div>
-
-          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">继续阅读</a>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more"><i class="fa fa-book"></i> 阅读全文</a>
         </article>
       {% endfor %}
   {% else %}
