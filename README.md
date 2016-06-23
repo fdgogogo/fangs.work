@@ -4,12 +4,13 @@
 
 ## TODO
 
-- [ ] Kombu 信使模型
+- [ ] rabbitmq rpc
 - [ ] docker-machine 快速安装
 - [ ] docker-swarm 部署
 - [ ] blinker 用于解耦
 - [ ] sqlalchemy
 - [ ] python cmd.Cmd
+- [ ] Kombu 信使模型
 
 ## Credits
 
