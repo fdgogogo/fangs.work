@@ -1,3 +1,15 @@
 misc:
   slug: misc
   name: 杂项
+
+python:
+  slug: python
+  name: Python
+
+ruby:
+  slug: ruby
+  name: Ruby
+
+node:
+  slug: node
+  name: NodeJS

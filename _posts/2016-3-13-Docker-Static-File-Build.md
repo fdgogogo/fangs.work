@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 使用docker-compose编译静态文件
+tags: [docker, python, node, ruby]
+
 ---
 
 许多项目部署的时候需要执行许多工具命令，比如通过`gulp`/`grunt`压缩静态文件，还有 `compass` 编译之类，

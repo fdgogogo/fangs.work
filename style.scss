@@ -116,12 +116,29 @@ img {
 }
 
 .post-meta{
+    background-color: $lightGray;
+    padding: 15px;
     font-size: 75%;
     text-align: right;
     font-style: italic;
     color: $mediumGray;
     a {
         color: $gray;
+    }
+    a.post-tag {
+        margin-right: 5px;
+        padding: 3px 5px;
+        font-size: 12px;
+        line-height: 12px;
+        border-radius: 3px;
+        background-color: $blue;
+        color: $white;
+        i {
+            margin-right: 3px;
+        }
+        &:hover, &:active {
+            color: $lightGray;
+        }
     }
 }
 
@@ -275,20 +292,8 @@ nav {
     font-size: 15px;
   }
 }
-a.post-tag {
-    padding: 3px 5px;
-    font-size: 12px;
-    line-height: 12px;
-    border-radius: 3px;
-    background-color: $blue;
-    color: $white;
-    i {
-        margin-right: 3px;
-    }
-    &:hover, &:active {
-      color: $lightGray;
-    }
-}
+
+
 .wrapper-footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
