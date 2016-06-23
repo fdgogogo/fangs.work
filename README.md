@@ -4,6 +4,7 @@
 
 ## TODO
 
+- [ ] ipython
 - [ ] rabbitmq rpc
 - [ ] docker-machine 快速安装
 - [ ] docker-swarm 部署
