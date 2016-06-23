@@ -18,16 +18,20 @@ html {
 }
 
 body {
-	background: $white;
+  background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
+  font-size: 16px;
 }
-
 .container {
   margin: 0 auto;
   max-width: 800px;
   padding: 0 10px;
   width: 100%;
+}
+
+code {
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,7 +56,7 @@ h1 {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 21px;
 }
 
 h3 {
@@ -60,7 +64,7 @@ h3 {
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 17px;
   color: $gray;
 }
 
@@ -73,7 +77,8 @@ a {
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: $blue;
+    color: $darkBlue;
+    transition: color 200ms;
   }
 }
 
@@ -117,7 +122,7 @@ img {
 
 .post-meta{
     background-color: $lightGray;
-    padding: 15px;
+    padding: 10px;
     font-size: 75%;
     text-align: right;
     font-style: italic;
@@ -138,6 +143,9 @@ img {
         }
         &:hover, &:active {
             color: $lightGray;
+        }
+        &:last-of-type {
+            margin-right: 0;
         }
     }
 }
@@ -274,23 +282,33 @@ nav {
 }
 
 .post {
-  blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 16px;
-    font-style: italic;
-  }
+    h1, h2, h3 {
+      border-bottom: 1px dashed $mediumGray;
+    }
+    code {
+        line-height: 16px;
+        border-radius: 5px;
+        background-color: $lightGray;
+        padding: 1px 7px;
+        color: $red;
+    }
+    blockquote {
+        margin: 1.8em .8em;
+        border-left: 2px solid $gray;
+        padding: 0.1em 1em;
+        color: $gray;
+        font-size: 16px;
+        font-style: italic;
+    }
 
-  .comments {
-    margin-top: 10px;
-  }
+    .comments {
+        margin-top: 10px;
+    }
 
-  .read-more {
-    text-transform: uppercase;
-    font-size: 15px;
-  }
+    .read-more {
+        text-transform: uppercase;
+        font-size: 15px;
+    }
 }
 
 
