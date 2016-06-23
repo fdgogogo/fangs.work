@@ -13,3 +13,7 @@ ruby:
 node:
   slug: node
   name: NodeJS
+
+docker:
+  slug: docker
+  name: Docker
