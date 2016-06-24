@@ -1,0 +1,14 @@
+jekyll:
+  image: jekyll/builder:pages
+  user: root
+  volumes:
+    - .:/srv/jekyll
+  command: jekyll build -d /static
+
+nginx:
+  image: nginx
+  volumes:
+    - ./_site:/usr/share/nginx/html:ro
+  ports:
+    - 80:80
+    - 443:443
