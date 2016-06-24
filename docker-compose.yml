@@ -8,7 +8,9 @@ jekyll:
 nginx:
   image: nginx
   volumes:
-    - ./_site:/usr/share/nginx/html:ro
+    - ./_site:/usr/share/nginx/fangs.work:ro
+    - ./nginx/certs:/certs:ro # 证书文件， 不在repo中
+    - ./nginx/conf.d:/etc/nginx/conf.d:ro
   ports:
     - 80:80
     - 443:443
