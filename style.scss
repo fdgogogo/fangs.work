@@ -120,35 +120,6 @@ img {
   max-width: none;
 }
 
-.post-meta{
-    background-color: $lightGray;
-    padding: 10px;
-    font-size: 75%;
-    text-align: right;
-    font-style: italic;
-    color: $mediumGray;
-    a {
-        color: $gray;
-    }
-    a.post-tag {
-        margin-right: 5px;
-        padding: 3px 5px;
-        font-size: 12px;
-        line-height: 12px;
-        border-radius: 3px;
-        background-color: $blue;
-        color: $white;
-        i {
-            margin-right: 3px;
-        }
-        &:hover, &:active {
-            color: $lightGray;
-        }
-        &:last-of-type {
-            margin-right: 0;
-        }
-    }
-}
 
 // Specify the color of the selection
 ::-moz-selection {
@@ -284,6 +255,24 @@ nav {
 .post {
     h1, h2, h3 {
       border-bottom: 1px dashed $mediumGray;
+      margin-bottom: 30px;
+    }
+    h4, h5, h6 {
+      border-left: 8px solid $mediumGray;
+      background-color: $lightGray;
+      padding: 7px 7px 7px 10px;
+    }
+    p {
+        text-indent: 32px;
+    }
+    ul, ol {
+        li {
+            p {
+                text-indent: 0;
+                color: $gray;
+                font-size: 90%;
+            }
+        }
     }
     code {
         line-height: 16px;
@@ -311,6 +300,35 @@ nav {
     }
 }
 
+.post-meta{
+    background-color: $lightGray;
+    padding: 10px;
+    font-size: 75%;
+    text-align: right;
+    font-style: italic;
+    color: $mediumGray;
+    a {
+        color: $gray;
+    }
+    a.post-tag {
+        margin-right: 5px;
+        padding: 3px 5px;
+        font-size: 12px;
+        line-height: 12px;
+        border-radius: 3px;
+        background-color: $blue;
+        color: $white;
+        i {
+            margin-right: 3px;
+        }
+        &:hover, &:active {
+            color: $lightGray;
+        }
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
 
 .wrapper-footer {
   margin-top: 50px;
