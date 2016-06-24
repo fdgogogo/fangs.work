@@ -37,3 +37,7 @@ permalink: /collection/
 ### 其他
 - [meow](https://github.com/renzhn/MEOW)
 - [常用镜像](http://fangs.work/Common-Repo-Mirror/)
+
+### 文章收藏
+
+- [Nginx 配置 SSL 证书 + 搭建 HTTPS 网站教程](https://s.how/nginx-ssl/)
