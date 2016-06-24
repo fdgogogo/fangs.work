@@ -3,7 +3,7 @@ jekyll:
   user: root
   volumes:
     - .:/srv/jekyll
-  command: jekyll build -d /static
+  command: jekyll build
 
 nginx:
   image: nginx
