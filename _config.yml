@@ -77,3 +77,5 @@ exclude:
     - README.md
     - CNAME
     - nginx
+    - docker-compose.yml
+    - _docker

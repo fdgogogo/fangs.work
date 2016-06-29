@@ -1,3 +1,4 @@
+
 jekyll:
   image: jekyll/builder:pages
   user: root
@@ -9,8 +10,20 @@ nginx:
   image: nginx
   volumes:
     - ./_site:/usr/share/nginx/fangs.work:ro
-    - ./nginx/certs:/certs:ro # 证书文件， 不在repo中
-    - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    - ./_docker/nginx/certs:/certs:ro # 证书文件， 不在repo中
+    - ./_docker/nginx/conf.d:/etc/nginx/conf.d:ro
   ports:
     - 80:80
     - 443:443
+  links:
+    - drone
+
+drone:
+    image: drone/drone:0.4
+    env_file: ./_docker/config.env
+    volumes:
+      - /var/lib/drone:/var/lib/drone
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    
+

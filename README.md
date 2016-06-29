@@ -10,6 +10,7 @@
 - [ ] docker-swarm 部署
 - [ ] blinker 用于解耦
 - [ ] sqlalchemy
+    - [ ] sqlalchemy relationship 
 - [ ] python cmd.Cmd
 - [ ] Kombu 信使模型
 
