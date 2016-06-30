@@ -262,15 +262,17 @@ nav {
       background-color: $lightGray;
       padding: 7px 7px 7px 10px;
     }
-    p {
-        text-indent: 32px;
-    }
-    ul, ol {
-        li {
-            p {
-                text-indent: 0;
-                color: $gray;
-                font-size: 90%;
+    .entry {
+        p {
+            text-indent: 32px;
+        }
+        ul, ol {
+            li {
+                p {
+                    text-indent: 0;
+                    color: $gray;
+                    font-size: 90%;
+                }
             }
         }
     }
