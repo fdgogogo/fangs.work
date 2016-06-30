@@ -17,13 +17,3 @@ nginx:
     - 443:443
   links:
     - drone
-
-drone:
-    image: drone/drone:0.4
-    env_file: ./_docker/config.env
-    volumes:
-      - /var/lib/drone:/var/lib/drone
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
-    
-

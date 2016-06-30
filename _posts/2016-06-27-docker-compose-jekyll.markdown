@@ -2,6 +2,7 @@
 layout: post
 title: "使用docker-compose构建自建Github-Pages环境"
 date: "2016-06-27 13:41:29 +0800"
+tags: [docker, docker-compose, jekyll]
 ---
 
 开新博客的时候，尝试了一下github-pages, 方便是很方便，但是还是有几个地方不能满足，比如插件受限，不支持自定义域名https等，正好手上一台服务器闲着也是闲着，决定自建一个，也作学习。
@@ -22,7 +23,36 @@ jekyll:
 
 然后使用 `docker-compose up` 命令即可编译静态文件，生成后的文件在当前目录的 `_site/` 底下，和直接使用 `jekyll build` 效果一样
 
-### 然后呢？
+### Nginx
 
-到现在为止，好像没有比直接`jekyll build`命令强大多少，只是省去了环境的安装？接下来我们就继续扩展我们的docker环境，加入Nginx及CI系统，使整个部署过程完全自动化，实现github pages一样的效果
+然后我们还需要配置Nginx来serve我们的静态文件, 这一步比较简单:
+
+在docker-compose.yml中添加nginx配置:
+
+如果不需要使用https, 则只需要简单挂载一下镜像即可:
+
+```yaml
+nginx:
+  image: nginx
+  volumes:
+    - ./_site:/usr/share/nginx/fangs.work:ro
+  ports:
+    - 80:80
+```
+
+然后直接`docker-compose up -d`即可在80端口serve你的jekyll站点了
+
+如果需要更进阶一点的设置，比如 https, vhost 等， 可以建立自己的配置文件和证书路径，然后将其挂载到容器内, 例如:
+
+```yaml
+nginx:
+  image: nginx
+  volumes:
+    - ./_site:/usr/share/nginx/fangs.work:ro
+    - ./_docker/nginx/certs:/certs:ro # 证书文件， 不在repo中
+    - ./_docker/nginx/conf.d:/etc/nginx/conf.d:ro
+  ports:
+    - 80:80
+    - 443:443
+```
 

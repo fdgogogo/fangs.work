@@ -17,3 +17,7 @@ node:
 docker:
   slug: docker
   name: Docker
+
+docker-compose:
+  slug: docker-compose
+  name: docker-compose
