@@ -1,23 +1,30 @@
-misc:
-  slug: misc
-  name: 杂项
-
-python:
-  slug: python
-  name: Python
-
-ruby:
-  slug: ruby
-  name: Ruby
-
-node:
-  slug: node
-  name: NodeJS
-
 docker:
-  slug: docker
   name: Docker
-
+  slug: docker
 docker-compose:
-  slug: docker-compose
   name: docker-compose
+  slug: docker-compose
+geek:
+  name: Geek
+  slug: geek
+misc:
+  name: 杂项
+  slug: misc
+netgear:
+  name: Netgear
+  slug: netgear
+node:
+  name: NodeJS
+  slug: node
+python:
+  name: Python
+  slug: python
+router:
+  name: 路由
+  slug: router
+ruby:
+  name: Ruby
+  slug: ruby
+tinkering:
+  name: 折腾
+  slug: tinkering
