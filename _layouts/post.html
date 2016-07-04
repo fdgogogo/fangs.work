@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 {% assign post = page %}
 {% if post.tags.size > 0 %}
     {% for post_tag in post.tags %}
@@ -18,7 +19,7 @@ layout: default
   <h1>{{ page.title }}</h1>
 
   <div class="entry">
-    {{ content }}
+    {{ content | toc }}
   </div>
   <div class="post-meta">
       <p>{{ tags_content }}</p>

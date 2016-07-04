@@ -1,10 +1,12 @@
 
 jekyll:
-  image: jekyll/builder:pages
+  image: jekyll/jekyll:pages
   user: root
   volumes:
     - .:/srv/jekyll
   command: jekyll build
+  environment:
+    - DEBUG=true
 
 nginx:
   image: nginx
