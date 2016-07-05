@@ -322,7 +322,7 @@ nav {
       border-left: 8px solid $blue;
       background-color: $lightBlue;
       background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,.5) 15px, rgba(255,255,255,.5) 30px);
-      #box-shadow: 5px 5px 2px $mediumGray;
+      text-shadow: 0 1px 0 #eee;
       font-size: 90%;
       font-style: normal;
   }

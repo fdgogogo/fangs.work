@@ -69,6 +69,8 @@ gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   - jekyll-toc
+  - jekyll/tagging
+  - jekyll-tagging-related_posts
 
 # Exclude these files from your production _site
 exclude:
