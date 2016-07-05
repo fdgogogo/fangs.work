@@ -3,6 +3,7 @@ layout: post
 title: "使用docker-compose构建自建Github-Pages环境"
 date: "2016-06-27 13:41:29 +0800"
 tags: [docker, docker-compose, jekyll]
+toc: true
 ---
 
 开新博客的时候，尝试了一下github-pages, 方便是很方便，但是还是有几个地方不能满足，比如插件受限，不支持自定义域名https等，正好手上一台服务器闲着也是闲着，决定自建一个，也作学习。

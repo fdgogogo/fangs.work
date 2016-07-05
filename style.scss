@@ -23,6 +23,7 @@ body {
   color: $darkGray;
   font-size: 16px;
 }
+
 .container {
   margin: 0 auto;
   max-width: 800px;
@@ -75,7 +76,7 @@ p {
 a {
   color: $blue;
   text-decoration: none;
-	cursor: pointer;
+  cursor: pointer;
   &:hover, &:active {
     color: $darkBlue;
     transition: color 200ms;
@@ -120,12 +121,12 @@ img {
   max-width: none;
 }
 
-
 // Specify the color of the selection
 ::-moz-selection {
   color: $black;
   background: $lightGray;
 }
+
 ::selection {
   color: $black;
   background: $lightGray;
@@ -135,12 +136,12 @@ img {
 // http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 /*********************/
@@ -253,83 +254,123 @@ nav {
 }
 
 .post {
-    h1, h2, h3 {
-      border-bottom: 1px dashed $mediumGray;
-      margin-bottom: 30px;
+
+
+  .entry {
+    @media screen and (min-width: 1200px) {
+      display: flex;
     }
-    h4, h5, h6 {
-      border-left: 8px solid $mediumGray;
-      background-color: $lightGray;
-      padding: 7px 7px 7px 10px;
-    }
-    .entry {
-        p {
-            text-indent: 32px;
-        }
-        ul, ol {
-            li {
-                p {
-                    text-indent: 0;
-                    color: $gray;
-                    font-size: 90%;
-                }
-            }
-        }
-    }
-    code {
-        line-height: 16px;
-        border-radius: 5px;
+    article {
+      flex: 1;
+      h1, h2, h3 {
+        border-bottom: 1px dashed $mediumGray;
+        margin-bottom: 30px;
+      }
+      h4, h5, h6 {
+        border-left: 8px solid $mediumGray;
         background-color: $lightGray;
-        padding: 1px 7px;
-        color: $red;
+        padding: 7px 7px 7px 10px;
+      }
     }
-    blockquote {
-        margin: 1.8em .8em;
-        border-left: 2px solid $gray;
-        padding: 0.1em 1em;
-        color: $gray;
-        font-size: 16px;
-        font-style: italic;
+    header {
+      @media screen and (min-width: 1200px) {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 200px;
+      }
+      font-style: italic;
+      padding: 10px 20px;
+      h2 {
+        border-bottom: 1px solid $lightGray;
+      }
+      ul.section-nav {
+        padding-left: 0;
+        list-style: circle inside;
+        li {
+          //border-bottom: 1px dashed $gray;
+          &.toc-h4 {
+            text-indent: 20px;
+          }
+          &.toc-h5 {
+            text-indent: 40px;
+          }
+          &.toc-h6 {
+            text-indent: 60px;
+          }
+          a {
+            color: $gray;
+          }
+        }
+      }
     }
+    p {
+      text-indent: 32px;
+    }
+    ul, ol {
+      li {
+        p {
+          text-indent: 0;
+          color: $gray;
+          font-size: 90%;
+        }
+      }
+    }
+  }
+  code {
+    line-height: 16px;
+    border-radius: 5px;
+    background-color: $lightGray;
+    padding: 1px 7px;
+    color: $red;
+  }
+  blockquote {
+    margin: 1.8em .8em;
+    border-left: 2px solid $gray;
+    padding: 0.1em 1em;
+    color: $gray;
+    font-size: 16px;
+    font-style: italic;
+  }
 
-    .comments {
-        margin-top: 10px;
-    }
+  .comments {
+    margin-top: 10px;
+  }
 
-    .read-more {
-        text-transform: uppercase;
-        font-size: 15px;
-    }
+  .read-more {
+    text-transform: uppercase;
+    font-size: 15px;
+  }
 }
 
-.post-meta{
-    background-color: $lightGray;
-    padding: 10px;
-    font-size: 75%;
-    text-align: right;
-    font-style: italic;
-    color: $mediumGray;
-    a {
-        color: $gray;
+.post-meta {
+  background-color: $lightGray;
+  padding: 10px;
+  font-size: 75%;
+  text-align: right;
+  font-style: italic;
+  color: $mediumGray;
+  a {
+    color: $gray;
+  }
+  a.post-tag {
+    margin-right: 5px;
+    padding: 3px 5px;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 3px;
+    background-color: $blue;
+    color: $white;
+    i {
+      margin-right: 3px;
     }
-    a.post-tag {
-        margin-right: 5px;
-        padding: 3px 5px;
-        font-size: 12px;
-        line-height: 12px;
-        border-radius: 3px;
-        background-color: $blue;
-        color: $white;
-        i {
-            margin-right: 3px;
-        }
-        &:hover, &:active {
-            color: $lightGray;
-        }
-        &:last-of-type {
-            margin-right: 0;
-        }
+    &:hover, &:active {
+      color: $lightGray;
     }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
 }
 
 .wrapper-footer {
