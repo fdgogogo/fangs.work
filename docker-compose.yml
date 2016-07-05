@@ -1,12 +1,10 @@
-
 jekyll:
-  image: jekyll/jekyll:pages
-  user: root
+  build: .
   volumes:
     - .:/srv/jekyll
-  command: jekyll build
   environment:
-    - DEBUG=true
+    - FORCE_APK_INSTALL=true
+#  command: jekyll serve
 
 nginx:
   image: nginx
