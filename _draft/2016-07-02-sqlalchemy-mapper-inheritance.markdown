@@ -38,7 +38,6 @@ class User(db.Model):
 class AdminUser(User):
     __mapper_args__ = {
         'polymorphic_identity': 'admin',
-        'polymorphic_on': user_type
     }
 
     def has_permission(self, permission):
@@ -73,7 +72,9 @@ admin
 >>> # 但是当我们重新从数据库取出对象的时候，可以正确的使用子类
 >>> db.session.add(user)
 >>> db.session.commit()
->>> user = User.query.get(user.id)
+>>> user_id = user.id
+>>> del user # 这里需要删除已经生成的对象, 否则sqlalchemy会自动复用已经生成的对象
+>>> user = User.query.get(user_id)
 >>> print(user)
 <AdminUser: xxx@xxx.com>
 ```
@@ -94,7 +95,15 @@ class User(db.Model):
         return children_classes[user_type](**kwargs)
 ```
 
+注意: 单表继承不应定义 `__tablename__`
+
 ### 联表继承
+
+很多时候我们需要处理更灵活一点的情况, 子类从父类继承一些属性, 但也需要定义部分自己的属性, 联表继承可以帮我们处理这种状况, 但相应的会带来一些性能开销
+
+顾名思义, 联表继承在hit数据库时会进行一个`JOIN`查询, 数据结构上的定义实际上是**子类的主键作为外键, 一对一关联到父类表的主键**, 子类独有的数据单独存放在一张表上
+
+
 
 ### 实体继承
 
