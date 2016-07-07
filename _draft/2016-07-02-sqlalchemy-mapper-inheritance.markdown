@@ -95,7 +95,7 @@ class User(db.Model):
         return children_classes[user_type](**kwargs)
 ```
 
-注意: 单表继承不应定义 `__tablename__`
+注意: 单表继承不应为自类定义 `__tablename__`
 
 ### 联表继承
 
@@ -103,7 +103,101 @@ class User(db.Model):
 
 顾名思义, 联表继承在hit数据库时会进行一个`JOIN`查询, 数据结构上的定义实际上是**子类的主键作为外键, 一对一关联到父类表的主键**, 子类独有的数据单独存放在一张表上
 
+看代码：
 
+```python
+class User(db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
+    user_type = db.Column(db.String(10))
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'normal',
+        'polymorphic_on': user_type
+    }
+
+class WechatUser(User):
+    __tablename__ = 'user_wechat'
+
+    # 定义一个到父类的外键
+    id = db.Column(db.Integer, db.ForeignKey('user.id', primary_key=True))
+    open_id = db.Column(db.String(40))
+    __mapper_args__ = {
+        'polymorphic_identity': 'wechat',
+    }
+```
+
+#### 查询行为
+
+我们来看下查询SQL
+
+```python
+>>> print(User.query)
+SELECT "user".id AS user_id, "user".user_type AS user_user_type
+FROM "user"
+>>> print(WechatUser.query)
+SELECT user_wechat.id AS user_wechat_id, "user".id AS user_id, "user".user_type AS user_user_type, user_wechat.open_id AS user_wechat_open_id
+FROM "user" JOIN user_wechat ON "user".id = user_wechat.id
+```
+
+可以看到，只查询父类的时候，不会查询子类的表，反之则会拼出一个`JOIN`查询, 且默认为 `INNER JOIN`, 亦即只查询子类的时候， 是不会列出父类的相关数据的。
+
+```
+>>> db.session.add(WechatUser())
+>>> db.session.add(User())
+>>> db.session.commit()
+>>> 
+>>> print(User.query.all())
+>>> print(WechatUser.query.all())
+[<__main__.WechatUser object at 0x1016a3e10>, <__main__.User object at 0x1016a3ed0>]
+[<__main__.WechatUser object at 0x10170b510>]
+```
+
+#### 使用with_polymorphic对查询进行一些控制
+
+在默认情况下，如果是从父类查出一个子类对象，在获取子类属性的时候会额外发起一次查询， 相当于我们正常定义的`relationship`中`lazy=True`时的行为， 例如：
+
+代码：(测试数据中User表的第一个对象为WechatUser)
+
+```python
+user = User.query.first()
+print(user.open_id)
+```
+
+查询：
+
+```sql
+SELECT user.id AS user_id, user.user_type AS user_user_type
+FROM user
+ LIMIT 1 OFFSET 0;
+SELECT user_wechat.open_id AS user_wechat_open_id;
+```
+
+当我们获取子类属性次数较少的时候，这样的查询是完全可以接受的，但是当我们预计会频繁调用子类属性的时候，这么做会带来大量的查询，这时候将所有表`JOIN`进来会是更好的选择
+
+幸运的是，SQLAlchemy同样提供了这种支持:
+
+```python
+>>> mixed = db.with_polymorphic(User, [User, WechatUser])
+>>> # 也可以写作 mixed = db.with_polymorphic(User, '*') join所有的子表
+>>> query = db.session.query(mixed)
+>>> print(query)
+SELECT "user".id AS user_id, "user".user_type AS user_user_type, user_wechat.id AS user_wechat_id, user_wechat.open_id AS user_wechat_open_id
+FROM "user" LEFT OUTER JOIN user_wechat ON "user".id = user_wechat.id
+>>> query.all()
+[<__main__.WechatUser object at 0x1016a3e10>, <__main__.User object at 0x1016a3ed0>]
+```
+
+`with_polymorphic` 同样提供了对过滤的支持, 
+
+```python
+>>> print(db.session.query(mixed).filter(mixed.WechatUser.open_id.is_(None)))
+SELECT "user".id AS user_id, "user".user_type AS user_user_type, user_wechat.id AS user_wechat_id, user_wechat.open_id AS user_wechat_open_id
+FROM "user" LEFT OUTER JOIN user_wechat ON "user".id = user_wechat.id
+WHERE user_wechat.open_id IS NULL
+```
+
+文档中还提供了一些更精细化的控制查询的手段，比如 `of_type`, 自定义的 `Join`, 还有 `.options()` 与 `joinedload` 策略, 本文在此暂不展开, 有需要请参考文档
 
 ### 实体继承
 
