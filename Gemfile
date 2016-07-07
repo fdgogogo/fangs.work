@@ -1,0 +1,7 @@
+source 'https://ruby.taobao.org'
+gem 'github-pages'
+gem 'jekyll-sitemap'
+gem 'jekyll-feed'
+gem 'kramdown'
+gem 'jekyll-toc'
+gem 'jekyll-tagging-related_posts'
