@@ -1,9 +1,15 @@
+database:
+  name: 数据库
+  slug: database
 docker:
   name: Docker
   slug: docker
 docker-compose:
   name: docker-compose
   slug: docker-compose
+flask:
+  name: Flask
+  slug: flask
 geek:
   name: Geek
   slug: geek
@@ -25,6 +31,9 @@ router:
 ruby:
   name: Ruby
   slug: ruby
+sqlalchemy:
+  name: SQLAlchemy
+  slug: sqlalchemy
 tinkering:
   name: 折腾
   slug: tinkering

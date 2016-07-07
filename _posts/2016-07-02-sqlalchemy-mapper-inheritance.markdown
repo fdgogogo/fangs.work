@@ -2,7 +2,7 @@
 layout: post
 title: "SQLAlchemy中的继承"
 date: "2016-07-02 23:06:50 +0800"
-tags: [python, sqlalchemy, database]
+tags: [python, sqlalchemy, database, flask]
 toc: true
 ---
 
@@ -133,9 +133,18 @@ class WechatUser(User):
 
 ```python
 >>> print(User.query)
+```
+
+```sql
 SELECT "user".id AS user_id, "user".user_type AS user_user_type
 FROM "user"
+```
+
+```python
 >>> print(WechatUser.query)
+```
+
+```sql
 SELECT user_wechat.id AS user_wechat_id, "user".id AS user_id, "user".user_type AS user_user_type, user_wechat.open_id AS user_wechat_open_id
 FROM "user" JOIN user_wechat ON "user".id = user_wechat.id
 ```
@@ -200,6 +209,69 @@ WHERE user_wechat.open_id IS NULL
 文档中还提供了一些更精细化的控制查询的手段，比如 `of_type`, 自定义的 `Join`, 还有 `.options()` 与 `joinedload` 策略, 本文在此暂不展开, 有需要请参考文档
 
 ### 实体继承
+
+SQLAlchemy还提供了一种继承方法，称为`concrete` 继承, 姑且翻译为实体继承
+
+在这种继承关系中，父类及其每个子类都具有一张完整的表, 表与表之间在数据库层面可以没有任何关系, 甚至我们在python中每个子类都必须**完整地定义每个字段，这些字段并不会从父类继承**
+
+因为每个子类都有一张完全独立的表, 因此并不像前两种继承关系一样，需要一个`polymorphic_identity`来区分每个子类, 也避免了JOIN和遇到查询字段时需要额外产生一个请求的问题
+
+但是代价就是，因为每个类都是一张独立的表，因此当我们想要从父类查询子类的时候，就必须`UNION`所有的表，所以子类不宜过多，否则性能开销是很恐怖的
+
+(所以说实话，个人并不是非常理解这种继承关系存在的意义。)
+
+类定义如下:
+
+```python
+from sqlalchemy.ext.declarative import ConcreteBase
+
+class User(ConcreteBase, db.Model):  # 注意: 此处应继承ConcreteBase
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+
+class WechatUser(User):
+    __tablename__ = 'user_wechat'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))  # 注意: 子类必须重新定义字段
+    open_id = db.Column(db.String(40))
+
+    __mapper_args__ = {
+        'concrete': True
+    }
+```
+
+查询:
+
+```python
+print(User.query)
+```
+
+```sql
+SELECT pjoin.id AS pjoin_id, pjoin.name AS pjoin_name, pjoin.type AS pjoin_type, pjoin.open_id AS pjoin_open_id
+FROM (SELECT "user".id AS id, "user".name AS name, CAST(NULL AS VARCHAR(40)) AS open_id, 'normal' AS type
+FROM "user" UNION ALL SELECT user_wechat.id AS id, user_wechat.name AS name, user_wechat.open_id AS open_id, 'wechat' AS type
+FROM user_wechat) AS pjoin
+```
+
+```python
+print(WechatUser.query)
+```
+
+```sql
+SELECT pjoin.id AS pjoin_id, pjoin.name AS pjoin_name, pjoin.open_id AS pjoin_open_id, pjoin.type AS pjoin_type
+FROM (SELECT user_wechat.id AS id, user_wechat.name AS name, user_wechat.open_id AS open_id, 'wechat' AS type
+FROM user_wechat) AS pjoin
+```
+
+可以看到，这里的查询动用了 `UNION` `CAST`, 形成了比较复杂的查询， 而且随着子类的增多，查询上的复杂性会快速增加，个人没有在生产环境中用过这种继承类型（不敢， 而且感觉没有必要）
+
+如果谁有这种继承关系适用的场合希望能够指出，一起学习。
+
+### 代码
+
+本文相关代码可参考 [gist](https://gist.github.com/fdgogogo/65666e58e2e860619c640b7215c4ccd9)
 
 ### 参考
 

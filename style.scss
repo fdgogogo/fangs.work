@@ -273,12 +273,13 @@ nav {
       }
     }
     header {
-      @media screen and (min-width: 1200px) {
+      @media screen and (min-width: 1360px) {
         position: fixed;
         right: 0;
         top: 0;
-        width: 200px;
+        width: 360px;
       }
+      font-size: 90%;
       font-style: italic;
       padding: 10px 20px;
       h2 {

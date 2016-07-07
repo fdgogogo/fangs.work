@@ -15,6 +15,6 @@ if __name__ == "__main__":
     with open('tags/%s.md' % tag_slug, 'w') as f:
         f.write('---\n')
         f.write('layout: blog_by_tag\n')
-        f.write('tag: %s\n' % tag_slug)
+        f.write('tag: %s\n' % tag_name)
         f.write('permalink: /tags/%s/\n' % tag_slug)
         f.write('---\n')
