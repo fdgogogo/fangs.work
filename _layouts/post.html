@@ -2,6 +2,7 @@
 layout: default
 ---
 
+
 <article class="post">
   <h1>{{ page.title }}</h1>
 
@@ -28,7 +29,11 @@ layout: default
     </div>
     {% endif %}
   <div class="post-meta">
-      <p>{{ page | tags}}</p>
+			<div class="tags">
+					{% for tag in page.tags %}
+					<a href="{{ tag | tag_url }}">{{ tag }}</a>
+					{% endfor %}
+			</div>
 
       <span class="copyright">
           	&copy; Fang Jiaan | 按照 <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/">CC BY-NC-ND 3.0 CN</a> 协议进行许可

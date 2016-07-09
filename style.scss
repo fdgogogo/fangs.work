@@ -362,23 +362,49 @@ nav {
 				color: $gray;
 		}
 }
-a.post-tag {
-		margin-right: 5px;
-		padding: 3px 5px;
-		font-size: 12px;
-		line-height: 12px;
-		border-radius: 3px;
-		background-color: $blue;
-		color: $white;
-		i {
-				margin-right: 3px;
+.tags {
+		margin: 10px 0;
+		a{
+				margin-right: 5px;
+				padding: 3px 5px;
+				font-size: 12px;
+				line-height: 12px;
+				border-radius: 3px;
+				background-color: $blue;
+				color: $white;
+				i {
+						margin-right: 3px;
+				}
+				&:hover, &:active {
+						color: $lightGray;
+				}
+				&:last-of-type {
+						margin-right: 0;
+				}
 		}
-		&:hover, &:active {
-				color: $lightGray;
+}
+#tag-cloud {
+	a {
+		display: inline-block;
+		height: 28px;
+		line-height: 28px;
+		vertical-align: middle;
+		&.set-1 {
+			font-size: 16px;
 		}
-		&:last-of-type {
-				margin-right: 0;
+		&.set-2 {
+			font-size: 18px;
 		}
+		&.set-3 {
+			font-size: 20px;
+		}
+		&.set-4 {
+			font-size: 22px;
+		}
+		&.set-5 {
+			font-size: 24px;
+		}
+	}
 }
 .wrapper-footer {
 		margin-top: 50px;
