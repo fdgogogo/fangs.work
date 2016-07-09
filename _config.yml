@@ -48,6 +48,10 @@ url: https://fangs.work
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
+monthly_archive: "monthly"
+tag_page_layout: blog_by_tag
+tag_page_dir: tags
+# tag_permalink_style: pretty
 
 #
 # !! You don't need to change any of the configuration flags below !!
@@ -55,7 +59,7 @@ baseurl: ""
 
 markdown: kramdown
 highlighter: rouge
-permalink: /:title/
+permalink: blog/:categories/:title.html
 
 # The release of Jekyll Now that you're using
 version: v1.1.0

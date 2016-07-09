@@ -2,19 +2,6 @@
 layout: default
 ---
 
-{% assign post = page %}
-{% if post.tags.size > 0 %}
-    {% for post_tag in post.tags %}
-        {% assign tag = site.data.tags[post_tag] %}
-        {% if tag %}
-        {% capture tags_content_temp %}{{ tags_content }}<a class="post-tag" href="/tags/{{ tag.slug }}/"><i class="fa fa-tag"></i>{{ tag.name }}</a>{% endcapture %}
-            {% assign tags_content = tags_content_temp %}
-        {% endif %}
-    {% endfor %}
-{% else %}
-    {% assign tags_content = '' %}
-{% endif %}
-
 <article class="post">
   <h1>{{ page.title }}</h1>
 
@@ -41,7 +28,7 @@ layout: default
     </div>
     {% endif %}
   <div class="post-meta">
-      <p>{{ tags_content }}</p>
+      <p>{{ page | tags}}</p>
 
       <span class="copyright">
           	&copy; Fang Jiaan | 按照 <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/">CC BY-NC-ND 3.0 CN</a> 协议进行许可
