@@ -2,7 +2,8 @@
 layout: post
 title: "使用docker-compose构建自建Github-Pages环境"
 date: "2016-06-27 13:41:29 +0800"
-tags: [docker, docker-compose, jekyll]
+tags: [Docker, docker-compose, Jekyll]
+category: [程序, Docker]
 toc: true
 ---
 

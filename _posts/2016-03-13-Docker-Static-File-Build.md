@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 使用docker-compose编译静态文件
-tags: [docker, python, node, ruby]
+tags: [Docker, Python, Node, Ruby]
+category: 代码
 toc: true
 ---
 

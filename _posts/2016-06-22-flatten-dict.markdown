@@ -2,7 +2,8 @@
 layout: post
 title: "Python摊平与反向组合字典"
 date: "2016-06-22 00:42:46 +0800"
-tags: [python]
+tags: [Python]
+categories: [程序, Python]
 ---
 
 我们经常会处理或者构造一些较为复杂的多层嵌套字典数据，这虽然不难，但经常是个比较麻烦的事情，比如我们需要一个这样的数据

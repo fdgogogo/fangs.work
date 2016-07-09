@@ -28,9 +28,18 @@
           </div>
 
           <nav>
-            <a href="{{ site.baseurl }}/">博客</a>
-            <a href="{{ site.baseurl }}/collection">项目收藏</a>
-            <a href="{{ site.baseurl }}/about">关于我</a>
+            <ul id="site-nav">
+                <li class="dropdown">
+                    <a href="">博客</a>
+                    <ul class="dropdown-content">
+                        {% for category in site.categories %}
+                        <li class="dropdown-item"><a href="/categories/{{category[0]}}">{{ category[0] }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="{{ site.baseurl }}/collection">项目收藏</a></li>
+                <li><a href="{{ site.baseurl }}/about">关于我</a></li>
+            </ul>
           </nav>
         </header>
       </div>

@@ -2,7 +2,8 @@
 layout: post
 title: "SQLAlchemy中的继承"
 date: "2016-07-02 23:06:50 +0800"
-tags: [python, sqlalchemy, database, flask]
+tags: [Python, SQLAlchemy, 数据库, Flask]
+category: [程序, Python]
 toc: true
 ---
 

@@ -2,7 +2,8 @@
 layout: post
 title: "常用开发工具源国内镜像"
 date: "2016-06-23 22:46:42 +0800"
-tags: [python, docker, ruby, node]
+tags: [Python, Docker, Ruby, Node]
+category: [程序, 杂项]
 toc: true
 ---
 

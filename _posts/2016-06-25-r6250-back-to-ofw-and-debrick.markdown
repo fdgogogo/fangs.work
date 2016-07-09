@@ -2,7 +2,8 @@
 layout: post
 title: "R6250刷梅林固件救砖及刷回原厂"
 date: "2016-06-25 00:45:25 +0800"
-tags: [geek, netgear, router, tinkering]
+tags: [Geek, Netgear, Router, 折腾]
+category: 折腾
 toc: true
 ---
 

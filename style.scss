@@ -226,7 +226,7 @@ nav {
     }
 
     a {
-        margin-left: 20px;
+        margin-right: 20px;
         color: $darkGray;
         text-align: right;
         font-weight: 300;
@@ -399,6 +399,46 @@ footer {
     }
 }
 
+ul#site-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li:not(.dropdown-item) {
+        display: inline;
+    }
+    li {
+    }
+}
+
+.dropdown {
+    ul.dropdown-content{
+        display: none;
+        position: absolute;
+        padding: 10px 0 0 0;
+        margin: 0;
+        list-style: none;
+        background-color: $darkGray;
+
+        li.dropdown-item {
+            margin: 0;
+            display: block;
+            box-sizing: content-box;
+            a {
+                padding: 10px 15px;
+                margin: 0;
+                display: block;
+                text-align: left;
+                color: white;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+            }
+        }
+    }
+    &:hover .dropdown-content {
+        display: block;
+    }
+}
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
