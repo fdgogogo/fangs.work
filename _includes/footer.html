@@ -1,0 +1,9 @@
+<div id="footer-nav">
+    <div class="column">
+        <h3>标签</h3>
+        {% for item in site.data.tags %}
+        {% assign tag = item[1] %}
+        <a class="post-tag" href="/tags/{{tag.slug}}">{{tag.name}} </a>
+        {% endfor %}
+    </div>
+</div>
