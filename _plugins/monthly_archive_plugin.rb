@@ -67,7 +67,7 @@ module Jekyll
       self.data = {
           'layout' => @layout,
           'type' => 'archive',
-          'title' => "Monthly archive for #{@year}/#{@month}",
+          'title' => "月度归档: #{@year}/#{@month}",
           'posts' => posts,
           'url' => File.join('/',
                      MonthlyArchiveUtil.archive_base(site),

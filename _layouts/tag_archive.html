@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-<div class="page category-archive">
+<div class="page tag-archive">
     <h1>
-        分类文章:   {{ page.category }}
+        标签归档:   {{ page.tag }}
     </h1>
     <div>
         {% if page.posts %}
@@ -17,7 +17,7 @@ layout: default
         </article>
         {% endfor %}
         {% else %}
-        <p>该分类下没有相关文章</p>
+        <p>该标签下没有相关文章</p>
         {% endif %}
     </div>
 </div>
