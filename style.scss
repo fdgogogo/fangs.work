@@ -212,33 +212,6 @@ img {
   }
 }
 
-nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
-  font-size: 18px;
-
-  @include mobile {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
-  }
-
-  a {
-    margin-right: 20px;
-    color: $darkGray;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
-
-    @include mobile {
-      margin: 0 10px;
-      color: $blue;
-    }
-  }
-}
-
 //
 // .main
 //
@@ -255,7 +228,7 @@ nav {
 
 .post {
   .entry {
-    @media screen and (min-width: 1360px) {
+    @include desktop {
       display: flex;
     }
     article {
@@ -271,7 +244,7 @@ nav {
       }
     }
     header {
-      @media screen and (min-width: 1360px) {
+      @include desktop {
         position: fixed;
         right: 0;
         top: 0;
@@ -320,7 +293,7 @@ nav {
     margin: 0;
     border-left: 8px solid $blue;
     background-color: $lightBlue;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,.5) 15px, rgba(255,255,255,.5) 30px);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255, 255, 255, .5) 15px, rgba(255, 255, 255, .5) 30px);
     text-shadow: 0 1px 0 #eee;
     font-size: 90%;
     font-style: normal;
@@ -362,9 +335,10 @@ nav {
     color: $gray;
   }
 }
+
 .tags {
   margin: 10px 0;
-  a{
+  a {
     margin-right: 5px;
     padding: 3px 5px;
     font-size: 12px;
@@ -383,6 +357,7 @@ nav {
     }
   }
 }
+
 #tag-cloud {
   a {
     display: inline-block;
@@ -406,6 +381,7 @@ nav {
     }
   }
 }
+
 .wrapper-footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
@@ -426,47 +402,80 @@ footer {
   }
 }
 
-ul#site-nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li:not(.dropdown-item) {
-    display: inline;
-  }
-  li {
-  }
-}
+nav {
+  float: right;
+  margin-top: 23px; // @todo: vertically middle align
+  font-family: $helveticaNeue;
+  font-size: 18px;
 
-.dropdown {
-  ul.dropdown-content{
-    padding: 0;
-    display: none;
-    position: absolute;
-    font-size: 90%;
-    margin: 0;
+  @include mobile {
+    float: none;
+    margin-top: 9px;
+    display: block;
+    font-size: 16px;
+  }
+
+  a {
+    padding: 10px 15px;
+    display: inline-block;
+    color: $darkGray;
+    text-align: right;
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    @include mobile {
+      margin: 0 10px;
+      color: $blue;
+    }
+  }
+  ul#site-nav {
     list-style: none;
-    background-color: $darkGray;
-
-    li.dropdown-item {
-      margin: 0;
-      display: block;
-      box-sizing: content-box;
-      a {
-        padding: 10px 15px;
-        margin: 0;
+    margin: 0;
+    padding: 0;
+    li:not(.dropdown-item) {
+      display: inline-block;
+    }
+    li.dropdown {
+      &:hover ul {
+        li {
+          max-height: 150px;
+        }
+      }
+      ul {
+        padding: 0;
         display: block;
-        text-align: left;
-        color: white;
+        position: absolute;
+        font-size: 90%;
+        margin: -3px 0 0 0;
+        list-style: none;
+        background-color: $darkGray;
         &:hover {
-          background-color: rgba(255, 255, 255, 0.2);
+          display: block;
+        }
+        li {
+          margin: 0;
+          display: block;
+          box-sizing: content-box;
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 500ms ease;
+
+          a {
+            padding: 10px 15px;
+            margin: 0;
+            display: block;
+            text-align: left;
+            color: white;
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.2);
+            }
+          }
         }
       }
     }
   }
-  &:hover .dropdown-content {
-    display: block;
-  }
 }
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
