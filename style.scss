@@ -254,10 +254,8 @@ nav {
 }
 
 .post {
-
-
   .entry {
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1360px) {
       display: flex;
     }
     article {
@@ -277,7 +275,7 @@ nav {
         position: fixed;
         right: 0;
         top: 0;
-        width: 360px;
+        width: 350px;
       }
       font-size: 90%;
       font-style: italic;
