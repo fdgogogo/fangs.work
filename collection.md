@@ -24,6 +24,8 @@ permalink: /collection/
 
 - [httpie](https://github.com/jkbrzt/httpie): 强大的curl替代
 - [upx](https://github.com/polym/upx): 又拍云命令行
+- [mycli](https://github.com/dbcli/mycli): MySQL命令行客户端，支持补全与高亮
+- [ipython](https://ipython.org/): 神器不解释
 
 ### 开发
 
