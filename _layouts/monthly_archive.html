@@ -2,14 +2,14 @@
 layout: default
 ---
 <div class="page monthly-archive">
-		<h1>
+		<h2>
 				月度归档:   {{ page.year}}-{{page.month | date:"%m"}}
-		</h1>
+		</h2>
 		<div>
 				{% if page.posts %}
 				{% for post in page.posts %}
 				<article class="post">
-						<h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+						<h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 						<div class="entry">
 								{{ post.excerpt }}
 						</div>
