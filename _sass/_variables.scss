@@ -30,7 +30,7 @@ $georgia: Georgia, serif;
 }
 
 @mixin desktop {
-  @media screen and (max-width: 1360px) {
+  @media screen and (min-width: 1360px) {
     @content;
   }
 }

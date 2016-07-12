@@ -7,7 +7,7 @@ layout: default
   <h2>{{ page.title }}</h2>
 
   <div class="entry">
-      {% if post.toc %}
+      {% if page.toc %}
       <header id="toc">
           <h3>目录</h3>
           {{ content | toc_only }}
