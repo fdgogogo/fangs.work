@@ -4,20 +4,20 @@ layout: default
 
 
 <article class="post">
-  <h2>{{ page.title }}</h2>
+    <h2>{{ page.title }}</h2>
 
-  <div class="entry">
-      {% if page.toc %}
-      <header id="toc">
-          <h3>目录</h3>
-          {{ content | toc_only }}
-      </header>
-      {% endif %}
-      <article>
-        {{ content | inject_anchors }}
-      </article>
+    <div class="entry">
+        {% if page.toc %}
+        <header id="toc">
+            <h3>目录</h3>
+            {{ content | toc_only }}
+        </header>
+        {% endif %}
+        <article>
+            {{ content | inject_anchors }}
+        </article>
 
-  </div>
+    </div>
     {% if site.related_posts.size >= 1 %}
     <div class="post-related">
         <h3>相关文章</h3>
@@ -28,21 +28,47 @@ layout: default
         </ul>
     </div>
     {% endif %}
-  <div class="post-meta">
-			<div class="tags">
-					{% for tag in page.tags %}
-					<a href="{{ tag | tag_url }}">{{ tag }}</a>
-					{% endfor %}
-			</div>
+    <div class="post-meta">
+        <div class="breadcrumbs">
 
-      <span class="copyright">
-          	&copy; Fang Jiaan | 按照 <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/">CC BY-NC-ND 3.0 CN</a> 协议进行许可
-      </span>
-      |
-      <span class="date">
-        创建于 {{ page.date | date: "%Y-%m-%d %H:%M"}}
-      </span>
-  </div>
+            <ol id="post-breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="/">
+                        <span itemprop="name">Fangs.work</span>
+                    </a> ›
+                    <meta itemprop="position" content="1" />
+                </li>
+                {% for category in page.categories %}
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="/blog/{{category}}/">
+                        <span itemprop="name">{{category}}</span>
+                    </a> ›
+                    <meta itemprop="position" content="{{ forloop.index | plus:1 }}" />
+                </li>
+                {% endfor %}
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="{{page.url}}" disabled>
+                        <span itemprop="name">{{page.title}}</span>
+                    </a>
+                    <meta itemprop="position" content="{{ page.categories | size | plus:2 }}" />
+                </li>
+            </ol>
 
-  {% include disqus.html %}
+        </div>
+        <div class="tags">
+            {% for tag in page.tags %}
+            <a href="{{ tag | tag_url }}">{{ tag }}</a>
+            {% endfor %}
+        </div>
+
+        <span class="copyright">
+            &copy; Fang Jiaan | 按照 <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/">CC BY-NC-ND 3.0 CN</a> 协议进行许可
+        </span>
+        |
+        <span class="date">
+            创建于 {{ page.date | date: "%Y-%m-%d %H:%M"}}
+        </span>
+    </div>
+
+    {% include disqus.html %}
 </article>

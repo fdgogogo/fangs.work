@@ -11,3 +11,22 @@
 {% if site.footer-links.stackoverflow %}<a href="http://stackoverflow.com/{{ site.footer-links.stackoverflow }}"><i class="svg-icon stackoverflow"></i></a>{% endif %}
 {% if site.footer-links.youtube %}<a href="https://youtube.com/{{ site.footer-links.youtube }}"><i class="svg-icon youtube"></i></a>{% endif %}
 {% if site.footer-links.googleplus %}<a href="https://plus.google.com/{{ site.footer-links.googleplus }}"><i class="svg-icon googleplus"></i></a>{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "Jiaan Fang",
+  "url": "https://fangs.work",
+  "sameAs": [
+    {% if site.footer-links.facebook %}"https://www.facebook.com/{{ site.footer-links.facebook }}",{% endif %}
+    {% if site.footer-links.instagram %}"https://instagram.com/{{ site.footer-links.instagram }}",{% endif %}
+    {% if site.footer-links.linkedin %}"https://www.linkedin.com/in/{{ site.footer-links.linkedin }}",{% endif %}
+    {% if site.footer-links.pinterest %}"https://www.pinterest.com/{{ site.footer-links.pinterest }}",{% endif %}
+    {% if site.footer-links.twitter %}"https://www.twitter.com/{{ site.footer-links.twitter }}",{% endif %}
+    {% if site.footer-links.stackoverflow %}"http://stackoverflow.com/{{ site.footer-links.stackoverflow }}",{% endif %}
+    {% if site.footer-links.youtube %}"https://youtube.com/{{ site.footer-links.youtube }}",{% endif %}
+    {% if site.footer-links.googleplus %}"https://plus.google.com/{{ site.footer-links.googleplus }},"{% endif %}
+    {% if site.footer-links.github %}"https://github.com/{{ site.footer-links.github }}"{% endif %}
+  ]
+}
+</script>

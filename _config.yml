@@ -21,7 +21,7 @@ footer-links:
   email: fduodev@gmail.com
   facebook:
   flickr:
-  github: fdgogogo/fangs.work
+  github: fdgogogo
   instagram: fdgogogo
   linkedin: jiaan-fang-b3164b42
   pinterest:
@@ -56,7 +56,7 @@ tag_feed_layout: tag_feed
 tag_feed_dir: tags
 
 category_archive:
-  path: categories
+  path: blog
   slugify: true
 monthly_archive:
   path: archives

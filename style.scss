@@ -337,6 +337,19 @@ img {
   a {
     color: $gray;
   }
+
+}
+ol#post-breadcrumbs {
+    list-style: none;
+    li {
+        display: inline-block;
+        &:last-child {
+            a {
+                color: $mediumGray;
+            }
+        }
+    }
+
 }
 
 .tags {

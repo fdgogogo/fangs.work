@@ -33,7 +33,7 @@
                     <a>博客 <i class="fa fa-chevron-down"></i> </a>
                     <ul class="dropdown-content">
                         {% for category in site.categories %}
-                        <li class="dropdown-item"><a href="/categories/{{category[0] | slugify}}">{{ category[0] }}</a></li>
+                        <li class="dropdown-item"><a href="/blog/{{category[0] | slugify}}">{{ category[0] }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
