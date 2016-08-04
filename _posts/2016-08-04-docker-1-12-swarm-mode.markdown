@@ -89,3 +89,9 @@ docker service create --mount type=volume,target=/container_data/,source=/host_d
 这里也能看出来 Docker 在更新上有点不靠谱, 大版本正式版发布, 文档还没有整的很清楚, 更新需要谨慎
 
 同时在现在(16-08-04), 1.12版本还存在不少比较严重的 bug, 比如容器内负载均衡并不是非常可靠, 有时会访问不到容器, 特别是在使用 `docekr service scale` 命令之后, 还有原先一直可用的通过 hostname 解析 container 地址的功能也暂时不可用, 这些已经被列在1.12.1版本的 milestone 中, 等待修复.
+
+- 现在 Swarm Mode 与 docker-compose 并不兼容, 我相信以后应该会兼容, 但现在暂时还不行, 不过大部分 swarm 的语法可以转写为 `docker service create`  的参数, docekr-compose 1.8.0 也提供了一个 `docker-compose bundle` 命令来生成 `dab` 文件, 可用于 `docker deploy` 文件进行服务发布, 但这个命令在 1.12 正式版中并没有提供, `docekr-compose bundle` 命令也还有很多语法不支持, 所以基本上处于还不能用的状态, 服务创建的命令需要自己写。 不过所幸的是我们有 `docker service update` 命令, 在服务创建之后就很少需要再次创建
+
+- 同 Docker Swarm 一样, Swarm Mode 在使用自行编译的镜像时, 必须将镜像推送到 registry 中.
+- 每次创建服务时, 每个节点都会到 registry 中检查镜像是否有更新, 哪怕 tag 相同(比如 `latest`), 没有原先 `docker-compose pull` 的困扰, 但如果你的应用没有发布版本, 而是一直使用 `latest` 的话, 使用 `docker service update --image` 时并不会有任何效果, 但有个小技巧, 我们可以在 `docker service update --image someimage` 与 `docker service update --image someimage:latest` 之前切换, 来让服务重新拉取镜像. 
+- ``--env-file`` 参数目前没有支持, 需要每个环境变量通过 `-e` 参数传入, 不过这也避免了原先 Docker Swarm 中每台机器同一路径都必须要有 envfile 的麻烦
